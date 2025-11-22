@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="max-age=31536000, public">
+<title>Sahid MI Engineering</title>
+<style>
+/* MOBILE VIEWPORT FIX */
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+* {
+    max-width: 100%;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
+body{scroll-behavior:smooth;background:#0f0f0f;color:#fff;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+/* Header */
+header{position:fixed;width:100%;top:0;left:0;background:#111;z-index:1000;box-shadow:0 4px 15px rgba(0,0,0,0.7);}
+header .container{display:flex;justify-content:space-between;align-items:center;padding:15px 50px;}
+.logo{display:flex;align-items:center;gap:15px;}
+.logo img{height:50px;}
+.logo span{color:gold;font-weight:bold;font-size:20px;}
+
+/* Navigation */
+nav ul{list-style:none;display:flex;gap:20px;}
+nav ul li a{color:#fff;padding:8px 12px;transition:0.3s;font-weight:bold;}
+nav ul li a:hover,nav ul li a.active{color:gold;}
+
+/* Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Section base */
+section{padding:120px 50px;min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;overflow:hidden;}
+h2,h1,p{opacity:0;transform:translateY(50px);transition:all 1s ease-out;}
+
+/* Hero Section */
+.hero{
+    background: url('photo1.png') center/cover no-repeat;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: gold;
+    padding: 0 20px;
+    position: relative;
+}
+
+.hero h1{
+    font-size: 60px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 20px #000;
+    font-weight: bold;
+}
+
+.hero p{
+    font-size: 22px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    text-shadow: 2px 2px 15px #000;
+}
+
+.hero-buttons{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+/* --- BUTTON STYLES --- */
+.home-buttons {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+}
+
+/* Animated 3D gradient background for sections */
+.bg-animated{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:linear-gradient(270deg,#111,#222,#333,#444,#111);background-size:1000% 1000%;animation:gradientMove 20s linear infinite;}
+@keyframes gradientMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+/* About Section */
+.about{position:relative;}
+.about-content{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;align-items:center;}
+.about .text{flex:1;min-width:300px;color:#ccc;font-size:18px;line-height:1.6;}
+.about .image{flex:1;min-width:300px;}
+.about .image img{width:100%;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+/* Cinematic About Section */
+.about.cinematic {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 50px;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  transition: transform 1s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.1);
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+  font-size: 20px;
+  color: gold;
+  line-height: 1.8;
+}
+
+.about-text .line {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideIn 1s forwards;
+}
+
+.about-text .line:nth-child(1) { animation-delay: 0.3s; }
+.about-text .line:nth-child(2) { animation-delay: 0.8s; }
+.about-text .line:nth-child(3) { animation-delay: 1.3s; }
+.about-text .line:nth-child(4) { animation-delay: 1.8s; }
+.about-text .line:nth-child(5) { animation-delay: 2.3s; }
+
+@keyframes slideIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+/* Services Section */
+.services .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:30px;}
+.service-card{background:#111;padding:20px;border-radius:15px;box-shadow:0 15px 30px rgba(255,215,0,0.2);transition:0.4s;transform-style:preserve-3d;opacity:0;transform:translateY(50px);}
+.service-card:hover{transform:translateY(-10px) rotateY(5deg);box-shadow:0 25px 50px rgba(255,215,0,0.5);}
+.service-card h3{color:gold;margin-bottom:10px;}
+.service-card p{color:#ccc;font-size:16px;line-height:1.5;}
+
+/* Products Section */
+.products .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:30px;}
+.product-card{background:#111;padding:20px;border-radius:15px;transition:0.4s;box-shadow:0 15px 30px rgba(255,215,0,0.2);transform-style:preserve-3d;opacity:0;transform:translateY(50px);}
+.product-card:hover{transform:translateY(-10px) rotateY(5deg);box-shadow:0 25px 50px rgba(255,215,0,0.5);}
+.product-card img{width:100%;border-radius:10px;margin-bottom:15px;}
+.product-card h3{color:gold;margin-bottom:10px;}
+.product-card p{color:#ccc;font-size:16px;line-height:1.5;}
+
+/* Why Choose Us Section */
+.why-choose .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:30px;}
+.card{background:#111;padding:20px;border-radius:15px;transition:0.4s;box-shadow:0 15px 30px rgba(255,215,0,0.2);opacity:0;transform:translateY(50px);}
+.card:hover{transform:translateY(-10px) rotateY(3deg);box-shadow:0 25px 50px rgba(255,215,0,0.5);}
+.card h3{color:gold;margin-bottom:10px;}
+.card p{color:#ccc;font-size:16px;line-height:1.5;}
+
+/* Contact Section */
+.contact form{display:flex;flex-direction:column;gap:15px;width:100%;max-width:500px;opacity:0;transform:translateY(50px);}
+input,textarea{padding:12px;border:none;border-radius:8px;font-size:16px;}
+input:focus,textarea:focus{outline:none;}
+button{padding:12px;font-weight:bold;background:gold;color:#000;border:none;border-radius:8px;cursor:pointer;transition:0.3s;box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+button:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 10px 25px rgba(0,0,0,0.5);}
+
+/* Location */
+.location p{color:#ccc;font-size:18px;max-width:800px;margin-bottom:20px;line-height:1.6;opacity:0;transform:translateY(50px);}
+
+/* Footer */
+footer{text-align:center;padding:20px;background:#111;color:#ccc;box-shadow:0 -4px 15px rgba(0,0,0,0.7);}
+
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366; /* WhatsApp green */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
+  z-index: 1000;
+}
+
+.whatsapp-btn i {
+  font-size: 28px;
+  color: #fff;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.2);
+}
+/* -------------------------------
+   GLOBAL RESPONSIVE FIXES
+--------------------------------*/
+
+/* Make all images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix hero text overflow */
+h1, h2, h3, p {
+  word-break: break-word;
+}
+
+/* Make buttons responsive */
+button, .btn, .hero-buttons a {
+  padding: 12px 20px;
+  font-size: 16px;
+  display: inline-block;
+}
+/* ============================
+      SERVICES SECTION STYLE
+============================= */
+
+.services-section {
+    padding: 60px 20px;
+    background: #111;
+    color: white;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.service-box {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.service-box h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.service-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e6e6e6;
+}
+
+.service-box:hover {
+    background: #222;
+    transform: translateY(-5px);
+    border-color: #FFD700;
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 900px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .service-box {
+        padding: 20px;
+    }
+}
+
+/* ============================
+      MOBILE NAVIGATION FIX
+============================= */
+@media (max-width: 768px) {
+    /* Fix mobile viewport and zoom issues */
+    body {
+        width: 100% !important;
+        overflow-x: hidden !important;
+        position: relative;
+    }
+    
+    /* Ensure all sections take full width */
+    section, .hero, header, footer {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    /* Fix container width */
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    /* Prevent horizontal scrolling */
+    html, body {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Mobile menu button */
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Hide regular nav on mobile */
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #111;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+        z-index: 1001;
+    }
+    
+    /* Show menu when active */
+    nav ul.active {
+        display: flex;
+    }
+    
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 12px;
+        font-size: 18px;
+        border-bottom: 1px solid #333;
+    }
+    
+    /* Fix hero section spacing */
+    .hero {
+        padding-top: 80px;
+        min-height: calc(100vh - 80px);
+    }
+    
+    .hero h1 {
+        margin-top: 0;
+        font-size: 32px !important;
+    }
+    
+    .hero p {
+        font-size: 16px !important;
+        padding: 0 10px;
+    }
+    
+    /* Fix section padding */
+    section {
+        padding: 100px 20px 60px;
+    }
+    
+    /* Center everything on phone */
+    .hero-section {
+        padding: 40px 20px !important;
+        text-align: center !important;
+    }
+
+    /* Responsive buttons */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .hero-buttons a {
+        width: 90%;
+        text-align: center;
+        padding: 14px 0 !important;
+        font-size: 18px !important;
+    }
+}
+
+/* Desktop navigation fix */
+@media (min-width: 769px) {
+    nav ul {
+        display: flex !important;
+        position: static !important;
+        background: transparent !important;
+        width: auto !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+    
+    .menu-toggle {
+        display: none !important;
+    }
+    
+    nav ul li {
+        width: auto !important;
+    }
+    
+    nav ul li a {
+        display: inline-block !important;
+        padding: 8px 12px !important;
+        border-bottom: none !important;
+    }
+}
+
+/* --- TABLET MODE --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-section h1 {
+        font-size: 42px !important;
+    }
+
+    .hero-buttons a {
+        font-size: 16px !important;
+    }
+}
+
+/* Animations */
+.show{opacity:1 !important;transform:translateY(0) !important;transition:all 1s ease-out;}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+        <span>Sahid MI Engineering</span>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    
+    <nav>
+        <ul id="nav-menu">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#why-choose">Why Choose Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#location">Location</a></li>
+        </ul>
+    </nav>
+</div>
+</header>
+
+<section class="hero" id="home">
+    <h1>Premium Engineering Solutions</h1>
+    <p>Leading the Manufacturing of Heavy Trucks & Fuel Tankers in Ethiopia</p>
+
+    <div class="hero-buttons">
+        <a href="#products" class="btn">Explore Products</a>
+        <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+</section>
+<section class="about" id="about">
+  <div class="bg-animated"></div>
+  <h2 style="margin-bottom:30px;">About Sahid MI Engineering</h2>
+  <div class="about-content">
+    <div class="text" style="background: rgba(0,0,0,0.65); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+      <p><span style="color:gold; font-weight:bold;">Sahid MI Engineering</span> stands as Ethiopia's leading manufacturer of heavy-duty vehicles, commercial trucks, fuel tankers, and underground fuel storage systems. For over <strong>15 years</strong>, we have been delivering innovative, reliable, and high-performance solutions to meet the growing needs of industries across the nation.</p>
+      
+      <p>Our expertise encompasses the design, engineering, and production of robust vehicles tailored to the demands of transportation, construction, and fuel logistics. With over <strong>500+ vehicles delivered</strong> and <strong>hundreds of satisfied clients</strong>, our reputation is built on <span style="color:gold; font-weight:bold;">quality, precision, and durability</span>.</p>
+      
+      <p>At Sahid MI Engineering, we combine cutting-edge technology, premium materials, and rigorous quality control. Our team of skilled engineers ensures that each product not only meets but exceeds industry standards, delivering unmatched safety and reliability.</p>
+      
+      <p>We are committed to empowering Ethiopia's industrial growth through <strong>customized solutions</strong> and innovative transport systems. From commercial trucks to specialized fuel tankers, our solutions are engineered to perform under the toughest conditions while maintaining efficiency and sustainability.</p>
+      
+      <p style="margin-top:20px; font-style:italic;">Discover the Sahid difference: <strong>innovation, expertise, and trust</strong> embedded in every vehicle we build.</p>
+    </div>
+    <div class="image" style="flex:1; min-width:300px; margin-left:30px;">
+      <img src="photo9.png" alt="About Sahid" style="width:100%; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+    </div>
+  </div>
+</section>
+<!-- ============================
+      SERVICES SECTION
+============================= -->
+<section class="services-section" id="services">
+
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">High-quality engineering solutions for Ethiopia's transport and energy industries.</p>
+
+    <div class="services-container">
+
+        <div class="service-box">
+            <h3>Heavy Truck Manufacturing</h3>
+            <p>
+                We assemble and upgrade heavy-duty trucks built for durability and performance on Ethiopia's challenging roads.
+            </p>
+        </div>
+
+        <div class="service-box">
+            <h3>Fuel Tanker Fabrication</h3>
+            <p>
+                High-capacity fuel tanker production with strict safety and industrial quality standards.
+            </p>
+        </div>
+
+        <div class="service-box">
+            <h3>Underground Fuel Tanks</h3>
+            <p>
+                Corrosion-resistant underground fuel storage tanks designed for fuel stations and industrial facilities.
+            </p>
+        </div>
+
+        <div class="service-box">
+            <h3>Customized Body Building</h3>
+            <p>
+                We fabricate custom truck bodies including flatbeds, tippers, water tankers, and commercial bodies.
+            </p>
+        </div>
+
+        <div class="service-box">
+            <h3>Industrial Metal Fabrication</h3>
+            <p>
+                Precision welding, cutting, bending, and assembly for large industrial projects.
+            </p>
+        </div>
+
+        <div class="service-box">
+            <h3>Maintenance & Support</h3>
+            <p>
+                Servicing, repairs, and spare parts to ensure long-term performance of all equipment.
+            </p>
+        </div>
+
+    </div>
+</section>
+<section class="products" id="products">
+<div class="bg-animated"></div>
+<h2>Our Products</h2>
+<div class="grid">
+    <div class="product-card"><img src="photo2.png" alt="Howo Commercial Truck"><h3>Howo Commercial Truck</h3><p>Reliable commercial trucks designed for heavy-duty transport, efficiency, and durability.</p></div>
+    <div class="product-card"><img src="photo3.png" alt="Cargo Truck"><h3>Cargo Truck</h3><p>Versatile trucks for goods transport with maximum load capacity and safety.</p></div>
+    <div class="product-card"><img src="photo4.png" alt="Howo Heavy Truck"><h3>Howo Heavy Truck</h3><p>High-performance trucks for tough terrains and demanding industrial work.</p></div>
+    <div class="product-card"><img src="photo5.png" alt="Howo Fuel Tanker Truck"><h3>Howo Fuel Tanker Truck</h3><p>Safe and durable fuel tankers for efficient fuel transport.</p></div>
+    <div class="product-card"><img src="photo6.png" alt="Underground Fuel Tanker"><h3>Underground Fuel Tanker</h3><p>Specialized underground tankers for fuel storage with maximum safety.</p></div>
+    <div class="product-card"><img src="photo7.png" alt="Custom Engineering Solutions"><h3>Custom Solutions</h3><p>Tailored solutions for unique industrial requirements, combining innovation with top-quality engineering.</p></div>
+<div class="product-card">
+    <img src="photo8.png" alt="Water Truck">
+    <h3>Water Truck</h3>
+    <p>High-capacity water truck designed for efficient transport, spraying, and supply of water. Built with durable materials and optimized for construction sites, road projects, and industrial operations.</p>
+</div>
+</section>
+
+<section class="why-choose" id="why-choose">
+  <div class="bg-animated"></div>
+  <h2>Why Choose Us</h2>
+  <div class="grid">
+    <div class="card"><h3>Expert Team</h3><p>Experienced engineers and designers in industrial vehicle manufacturing and fuel solutions.</p></div>
+    <div class="card"><h3>Premium Quality</h3><p>High-quality materials and advanced manufacturing techniques exceeding industry standards.</p></div>
+    <div class="card"><h3>Trusted Reputation</h3><p>Years of successful projects and satisfied clients, synonymous with reliability and excellence.</p></div>
+    <div class="card"><h3>15 Years of Experience</h3><p>Over 15 years of expertise in manufacturing heavy trucks, fuel tankers, and industrial transport solutions, delivering unmatched quality and reliability.</p></div>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="bg-animated"></div>
+  <h2>Contact Us</h2>
+  
+  <!-- Contact Info -->
+  <div class="contact-info" style="margin-bottom:40px; text-align:center;">
+    <p style="font-size:18px; color:#ccc; margin-bottom:10px;">Email: <a href="mailto:sahidmiengineering@gmail.com" style="color:gold;">sahidmiengineering@gmail.com</a></p>
+    <p style="font-size:18px; color:#ccc; margin-bottom:10px;">Phone: <a href="tel:+251974444442" style="color:gold;">+251 974 444 442</a></p>
+    <p style="font-size:18px; color:#ccc;">Phone: <a href="tel:+251974444448" style="color:gold;">+251 974 444 448</a></p>
+  </div>
+
+  <!-- Optional Contact Form -->
+  <form style="display:flex; flex-direction:column; gap:15px; width:100%; max-width:500px; margin:0 auto; opacity:0; transform:translateY(50px);">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<section class="location" id="location">
+  <div class="bg-animated"></div>
+  <h2 style="color:gold; text-shadow: 2px 2px 10px #000;">Our Location</h2>
+  <p style="color:#ccc; font-size:18px; max-width:800px; line-height:1.6; text-align:center; margin-bottom:20px;">
+    We are located in <strong>Jigjiga, Ethiopia</strong>, in front of the Somali Regional State, directly opposite the House of the President. Visit us to explore our premium range of industrial vehicles and fuel tankers.
+  </p>
+
+  <!-- Location Section -->
+<div style="text-align:center; margin:20px 0;">
+  <a href="https://maps.app.goo.gl/RNzFFuhgGd1Z9PEU7?g_st=ipc" target="_blank" 
+     style="display:inline-block; padding:12px 25px; background-color:#007BFF; color:white; 
+            text-decoration:none; font-weight:bold; border-radius:6px; font-family:Arial, sans-serif;">
+    View Location on Google Maps
+  </a>
+</div>
+  </div>
+</section>
+
+<footer>
+<p>&copy; 2025 Sahid MI Engineering. All Rights Reserved.</p>
+</footer>
+
+<a href="https://wa.me/251974444442?text=Asalaamu%20calaykum%2C%20waxaan%20jeclaan%20lahaa%20inaan%20wax%20ka%20ogaado%20adeegyada%20iyo%20badeecooyinka%20Sahid%20MI%20Engineering." class="whatsapp-btn" target="_blank">📱</a>
+<script>
+// Scroll-triggered text animation
+const animateElements = document.querySelectorAll('h1,h2,p,.service-card,.product-card,.card,form,.location p');
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('show');}
+    });
+},{threshold:0.2});
+animateElements.forEach(el=>observer.observe(el));
+
+// Highlight nav links on scroll
+const sections=document.querySelectorAll('section');
+const navLi=document.querySelectorAll('nav ul li a');
+window.addEventListener('scroll',()=>{
+    let current='';
+    sections.forEach(section=>{
+        const sectionTop=section.offsetTop-150;
+        if(pageYOffset>=sectionTop) current=section.getAttribute('id');
+    });
+    navLi.forEach(li=>li.classList.remove('active'));
+    if(current) document.querySelector('nav ul li a[href*='+current+']').classList.add('active');
+});
+
+// Mobile menu toggle function
+function toggleMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.toggle('active');
+}
+
+// Close menu when clicking on a link
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.remove('active');
+    });
+});
+</script>
+
+</body>
+</html>
